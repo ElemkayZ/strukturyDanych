@@ -1,4 +1,2 @@
-struct ArrayList
-{
-     int ArrayList[];
-};
+#include "ArrayList.h";
+
