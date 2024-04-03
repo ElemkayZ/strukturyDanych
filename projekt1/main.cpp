@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include "ArrayList.h"
 #include "sigLinkList.cpp"
+#include "SigNode.cpp"
 
 int main(){
-    SigLinklist *lista = new SigLinklist();
+    BetterSigLinklist *lista = new BetterSigLinklist();
     for (int i = 1; i < 100; i++)
     {
         lista->addEnd(i);
@@ -12,11 +13,11 @@ int main(){
     lista->removeStart();
     lista->addEnd(69);
     lista->addStart(69);
-    lista->remove(100);
+    lista->remove(98);
     lista->add(5,69);
     lista->removeEnd();
     printf("%d",lista->getLen());
-    Node *ptr = new Node();
+    SigNode *ptr = new SigNode();
     ptr = lista->getHead();
     
     while (ptr != NULL)

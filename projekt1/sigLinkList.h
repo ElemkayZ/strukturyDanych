@@ -1,40 +1,26 @@
-//Node class used for elements of a Linked List
-class Node{
-     //private variables for better safety
-     int data;
-     Node *adress;
-public:
-     //constructors:
-     Node();
-     Node(int);
-     //functions to return private variables
-     int getData();
-     Node* getAdress();
-     void changeData(int);
-     void changeAdress(Node*);
-};
+#include "SigNode.h"
 //Single Linked List containing only head pointer
 class SigLinklist{
-     Node *head;
+     SigNode *head;
      int len;
 public:
      SigLinklist();
-     void addEnd(int);//
-     void removeEnd();//
-     void addStart(int);//
-     void removeStart();//
-     void add(int,int);//
-     void remove(int);//
-     Node* getLastNode();//
-     int getLen();//
-     Node* getHead();//
+     void addEnd(int);
+     void removeEnd();
+     void addStart(int);
+     void removeStart();
+     void add(int,int);
+     void remove(int);
+     SigNode* getLastSigNode();
+     int getLen();
+     SigNode* getHead();
 
 
 };
 //Better Single Linked List containing head and tail pointers
 class BetterSigLinklist{
-     Node *head;
-     Node *tail;
+     SigNode *head;
+     SigNode *tail;
      int len;
 public:
      BetterSigLinklist();
@@ -44,9 +30,9 @@ public:
      void removeStart();
      void add(int,int);
      void remove(int);
-     Node* getLastNode();
      int getLen();
-     Node* getHead();
+     SigNode* getHead();
+     SigNode* getTail();
 
 
 };
