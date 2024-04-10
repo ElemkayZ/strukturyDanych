@@ -1,5 +1,5 @@
-#ifndef SigNode_H
-#define SigNode_H
+#pragma once
+
 //SigNode class used for elements of a Linked List
 class SigNode{
      //private variables for better safety
@@ -15,4 +15,3 @@ public:
      void changeData(int);
      void changeAdress(SigNode*);
 };
-#endif

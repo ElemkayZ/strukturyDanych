@@ -20,7 +20,6 @@ SigNode* SigLinklist::getLastSigNode(){
 //function adding new SigNode at the end
 void SigLinklist::addEnd(int _data){
     SigNode *newSigNode = new SigNode(_data);
-    newSigNode->changeData(_data);
     if(head == NULL){
         head = newSigNode;
         return;
@@ -120,7 +119,17 @@ SigNode *iterator = new SigNode();
     iterator2->changeAdress(NULL);
     delete iterator;
 }
-
+SigNode* SigLinklist::FindNumber(int _number){
+    SigNode* ptr = this->head;
+    while (ptr->getAdress())
+    {
+        if(ptr->getData()==_number){
+            return ptr;
+        }
+        ptr = ptr->getAdress();
+    }
+    return NULL;
+}
 /////////////////////////////////////////////////////////
 // BetterSigLinkList CLASS
 /////////////////////////////////////////////////////////
@@ -242,4 +251,16 @@ SigNode *iterator = new SigNode();
     iterator2->changeAdress(NULL);
     this->tail = iterator;
     delete iterator;
+}
+SigNode* BetterSigLinklist::FindNumber(int _number){
+    SigNode* ptr = this->head;
+    while (ptr->getAdress())
+    {
+        if(ptr->getData()==_number){
+            return ptr;
+        }
+        ptr = ptr->getAdress();
+
+    }
+    return NULL;
 }
