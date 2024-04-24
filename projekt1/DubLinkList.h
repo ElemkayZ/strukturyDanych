@@ -1,3 +1,4 @@
+#pragma once
 #include "DubNode.h"
 //Single Linked List containing only head pointer
 class DubLinklist{
@@ -10,11 +11,13 @@ public:
      void removeEnd();
      void addStart(int);
      void removeStart();
-     void add(int,int);
+     void addBefore(int,int);
+     void addAfter(int,int);
      void remove(int);
      int getLen();
      DubNode* getHead();
      DubNode* getTail();
-
+     DubNode* getNode(int);
+     DubNode* findNumber(int);
 
 };

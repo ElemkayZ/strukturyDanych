@@ -1,12 +1,10 @@
-#ifndef DubNode_H
-#define DubNode_H
+#pragma once
 //DubNode class used for elements of a Linked List
 class DubNode{
      //private variables for better safety
      int data;
      DubNode *prev;
      DubNode *next;
-
 public:
      //constructors:
      DubNode();
@@ -16,5 +14,8 @@ public:
      DubNode* getNext();
      void changeData(int);
      void changeNext(DubNode*);
+     DubNode* getPrev();
+     void changePrev(DubNode*);
+
+
 };
-#endif

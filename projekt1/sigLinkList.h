@@ -1,3 +1,4 @@
+#pragma once
 #include "SigNode.h"
 //Single Linked List containing only head pointer
 class SigLinklist{
@@ -14,7 +15,7 @@ public:
      SigNode* getLastSigNode();
      int getLen();
      SigNode* getHead();
-
+     SigNode* FindNumber(int);
 
 };
 //Better Single Linked List containing head and tail pointers
@@ -33,6 +34,7 @@ public:
      int getLen();
      SigNode* getHead();
      SigNode* getTail();
+     SigNode* FindNumber(int);
 
 
 };
