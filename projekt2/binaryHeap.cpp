@@ -56,7 +56,7 @@ using namespace std;
 
     binaryHeap::binaryHeap() {
         size = 0;
-        capacity = 10;
+        capacity = 10000;
         heap = new Pair[capacity];
         elementIndices = new int[capacity];
         for (int i = 0; i < capacity; ++i) {
@@ -96,7 +96,7 @@ using namespace std;
 
     void binaryHeap::modifyPriority(int item, int new_priority) {
         if (elementIndices[item] == -1) {
-            cout << "Item not found in priority queue" << endl;
+            // cout << "Item not found in priority queue" << endl;
             return;
         }
         int index = elementIndices[item];

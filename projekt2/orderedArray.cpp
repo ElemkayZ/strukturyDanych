@@ -44,7 +44,7 @@ void orderedArray::resize() {
 
     Pair orderedArray::extract(){
         if (size == 0) {
-            std::cerr << "Queue is empty!" << std::endl;
+            // std::cerr << "Queue is empty!" << std::endl;
             return *new Pair(-1,-1);
         }
         Pair maxValue = this->array[0]; 
@@ -83,6 +83,6 @@ void orderedArray::resize() {
                 array[i] = modifiedElement;
             }
         } else {
-            std::cerr << "Element not found!" << std::endl;
+            // std::cerr << "Element not found!" << std::endl;
         }
     }
