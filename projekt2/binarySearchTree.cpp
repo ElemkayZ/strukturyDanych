@@ -19,6 +19,8 @@ using namespace std;
         root->right = insertNode(root->right, data, priority);
         return root;
     }
+
+
      // Function to insert an element with a given priority
     void binarySearchTree::insert(int _data, int _priority) {
         root = insertNode(root, _data, _priority);

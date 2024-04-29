@@ -19,10 +19,7 @@ private:
     int size = 0;
     Node* insertNode(Node* _root, int _data, int _priority);
     void displayHandler(Node* root);
-    // Node* deleteNode(Node* root, int key);
-    // void modifyNode(Node* root, int oldKey, int newKey);
-    // void inorderTraversal(Node* root);
-    
+
 public:
     binarySearchTree() : root(nullptr){}
     void insert(int _data, int _priority);//
@@ -30,10 +27,7 @@ public:
     int extractMax();//
     void modifyPrio(int _data, int _priority);//
     int returnSize();
-    // Node* newNode(int key, int priority);
-    // Node* deleteMax(Node* root);
-    // void deleteKey(int key);
-    // int findMaxValue(Node* root);
+
     void display();
 
    
