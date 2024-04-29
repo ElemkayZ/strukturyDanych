@@ -4,31 +4,36 @@ struct Node
 {
 protected:
 public:
-    int key;
+    int data;
+    int priority;
     Node* left;
     Node* right;
 
+    Node(int _data, int _prio) : data(_data), priority(_prio), left(nullptr) ,right(nullptr){}
 };
 
 class binarySearchTree
 {
 private:
     Node* root;
-    Node* insertNode(Node* root, int key);
-    Node* deleteNode(Node* root, int key);
-    void modifyNode(Node* root, int oldKey, int newKey);
-    void inorderTraversal(Node* root);
+    int size = 0;
+    Node* insertNode(Node* _root, int _data, int _priority);
+    void displayHandler(Node* root);
+    // Node* deleteNode(Node* root, int key);
+    // void modifyNode(Node* root, int oldKey, int newKey);
+    // void inorderTraversal(Node* root);
     
 public:
-    binarySearchTree();
-    Node* newNode(int key);
-    void insert(int key);
-    Node* findMax(Node* root);
-    Node* deleteMax(Node* root);
-    void deleteKey(int key);
-    int findMaxValue(Node* root);
-    int extractMax();
-    void modifyKey(int oldKey, int newKey);
+    binarySearchTree() : root(nullptr){}
+    void insert(int _data, int _priority);//
+    Node* findMax(Node* _root);//
+    int extractMax();//
+    void modifyPrio(int _data, int _priority);//
+    int returnSize();
+    // Node* newNode(int key, int priority);
+    // Node* deleteMax(Node* root);
+    // void deleteKey(int key);
+    // int findMaxValue(Node* root);
     void display();
 
    

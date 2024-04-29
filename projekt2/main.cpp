@@ -4,31 +4,26 @@
 
 
 int main() {
-    binarySearchTree bst;
+    binarySearchTree pq;
 
     // Insertion
-    bst.insert(5);
-    bst.insert(10);
-    bst.insert(3);
-    bst.insert(7);
+    pq.insert(40,7);
+    pq.insert(20,10);
+    pq.insert(30,3);
+    pq.insert(10,5);
 
-    // Display
-    std::cout << "Binary Search Tree: ";
-    bst.display();
+    std::cout << "Queue contents after insertion:" << std::endl;
+    pq.display();
 
-    // Extraction of maximum
-    int maxKey = bst.extractMax();
-    std::cout << "Maximum key extracted: " << maxKey << std::endl;
+    std::cout << "Extracted max element: " << pq.extractMax() << std::endl;
 
-    // Display after extraction
-    std::cout << "Binary Search Tree after extraction: ";
-    bst.display();
+    std::cout << "Queue contents after extraction:" << std::endl;
+    pq.display();
 
-    // Modify key
-    bst.modifyKey(3, 9);
-    std::cout << "Key 3 modified to 9" << std::endl;
-    std::cout << "Binary Search Tree after modification: ";
-    bst.display();
+    pq.modifyPrio(20, 15);
+
+    std::cout << "Queue contents after priority modification:" << std::endl;
+    pq.display();
 
     return 0;
 }
