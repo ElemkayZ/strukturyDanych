@@ -26,3 +26,11 @@ In summary, while both binary heap and binary search tree can be used to impleme
 
 
 
+Oto jak ten kod wykorzystuje kopiec binarny:
+
+Funkcja upHeap(int index) wykonuje operację "przesiewania w górę" po wstawieniu nowego elementu. To oznacza, że nowy element jest porównywany z jego rodzicem i zamieniany z nim, jeśli jego priorytet jest większy. Proces ten jest kontynuowany, aż nowy element znajdzie odpowiednie miejsce w kopcu.
+Funkcja downHeap(int index) wykonuje operację "przesiewania w dół" po usunięciu elementu. To oznacza, że element na szczycie kopca jest zastępowany przez ostatni element, a następnie porównywany z jego dziećmi i zamieniany z większym z nich, jeśli jego priorytet jest mniejszy. Proces ten jest kontynuowany, aż element na szczycie kopca znajdzie odpowiednie miejsce.
+Funkcja insert(int item, int priority) dodaje nowy element do kopca, wstawiając go na końcu i wywołując upHeap w celu przywrócenia właściwości kopca.
+Funkcja extract() usuwa i zwraca element o najwyższym priorytecie z kopca, a następnie wywołuje downHeap w celu przywrócenia właściwości kopca.
+Funkcja modifyPriority(int item, int new_priority) zmienia priorytet określonego elementu i wywołuje odpowiednio downHeap lub upHeap w zależności od zmiany priorytetu.
+Klasa binaryHeap służy do implementacji tych operacji na kopcu binarnym, który jest używany jako struktura danych do przechowywania elementów w kolejce priorytetowej.

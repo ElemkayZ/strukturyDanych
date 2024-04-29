@@ -1,43 +1,46 @@
 #include "binaryHeap.cpp"
-#include "binarySearchTree.cpp"
+#include "orderedArray.cpp"
 #include <iostream>
-
+#include <ctime>  
+#include <random>
 
 int main() {
-    // binarySearchTree pq;
 
-    // // Insertion
-    // pq.insert(40,7);
-    // pq.insert(20,10);
-    // pq.insert(30,3);
-    // pq.insert(10,5);
+    orderedArray pq;
 
-    // std::cout << "Queue contents after insertion:" << std::endl;
-    // pq.display();
+    // Adding elements to the queue with specified priorities
+    pq.insert(10, 20);
+    pq.insert(15, 30);
+    pq.insert(5, 10);
+    pq.insert(3, 20);
 
-    // std::cout << "Extracted max element: " << pq.extractMax() << std::endl;
+    // Modifying the priority of an element
+    pq.modifyPriority(15, 0); // Change priority of value 15 to 0
 
-    // std::cout << "Queue contents after extraction:" << std::endl;
-    // pq.display();
-
-    // pq.modifyPrio(20, 15);
-
-    // std::cout << "Queue contents after priority modification:" << std::endl;
-    // pq.display();
+    // Removing and displaying elements with the highest priority
+    while (!(pq.getSize() == 0)) {
+        Pair element = pq.extract();
+        std::cout << "Value: " << element.item << ", Priority: " << element.priority << std::endl;
+    }
 
 
-    binaryHeap pq;
-    pq.insert(1, 10);
-    pq.insert(2, 20);
-    pq.insert(3, 15);
-    pq.insert(4, 5);
-    pq.insert(5, 34);
-    pq.insert(6, 35);
 
-    std::cout << "Dequeue: " << pq.extract() << std::endl; // Output: 6
 
-    pq.modifyPriority(1, 20);
-    std::cout << "Dequeue: " << pq.extract() << std::endl; // Output: 1
+    // mt19937 rng(time(0));
+    // std::uniform_int_distribution<unsigned long> dis;
+
+
+    // binaryHeap pq;
+
+    // for (int i = 0; i < 1000000; ++i) {
+    //     pq.insert(i, dis(rng));
+    //     std::cout << dis(rng)<<std::endl;
+
+    // }
+    // std::cout << "Dequeue: " << pq.extract() << std::endl; // Output: 6
+
+    // pq.modifyPriority(1, 20);
+    // std::cout << "Dequeue: " << pq.extract() << std::endl; // Output: 1
 
     return 0;
 

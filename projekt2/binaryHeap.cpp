@@ -4,8 +4,6 @@
 
 using namespace std;
 
-const int MAX_SIZE = 10000; 
-
 
     void binaryHeap::upHeap(int index) {
         while (index > 0) {
