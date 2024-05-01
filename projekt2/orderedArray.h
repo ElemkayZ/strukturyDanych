@@ -1,12 +1,6 @@
 #pragma once
 #include "binaryHeap.h"
-// struct Pair
-// {
-//     int item;
-//     int priority;
-//     Pair() : item(0), priority(0) {};
-//     Pair(int _item, int _priority) : item(_item), priority(_priority) {}
-// };
+// struct Pair implemented in binaryHeap.h
 class orderedArray
 {
 private:

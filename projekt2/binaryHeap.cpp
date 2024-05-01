@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+    //heapify up function
     void binaryHeap::upHeap(int index) {
         while (index > 0) {
             int parent_index = (index - 1) / 2;
@@ -17,7 +17,7 @@ using namespace std;
             index = parent_index;
         }
     }
-
+    //heapify down function
     void binaryHeap::downHeap(int index) {
         while (index < size) {
             int left_child_index = 2 * index + 1;
@@ -38,7 +38,7 @@ using namespace std;
             index = largest;
         }
     }
-
+    //function to increase array size
     void binaryHeap::resize() {
         int new_capacity = capacity * 2;
         Pair *new_heap = new Pair[new_capacity];
@@ -53,7 +53,7 @@ using namespace std;
         elementIndices = new_element_indices;
         capacity = new_capacity;
     }
-
+    //constructor
     binaryHeap::binaryHeap() {
         size = 0;
         capacity = 10000;
@@ -63,7 +63,7 @@ using namespace std;
             elementIndices[i] = -1; // Initialize all indices to -1
         }
     }
-
+    //function to add element to heap and helping array
     void binaryHeap::insert(int item, int priority) {
         if (size == capacity) {
             resize();
@@ -73,7 +73,7 @@ using namespace std;
         upHeap(size);
         ++size;
     }
-
+    //function to return and remove max prio element from heap
     int binaryHeap::extract() {
         if (size == 0) {
             return -1; // or any suitable indicator for empty queue
@@ -90,10 +90,11 @@ using namespace std;
         downHeap(0);
         return item;
     }
+    //function returning max prio element from heap
     int binaryHeap::peek(){
         return heap[0].item;
     }
-
+    //function modifying prio of first encoutered element with given val
     void binaryHeap::modifyPriority(int item, int new_priority) {
         if (elementIndices[item] == -1) {
             // cout << "Item not found in priority queue" << endl;
@@ -108,7 +109,7 @@ using namespace std;
             upHeap(index);
         }
     }
-
+    //function to retun array size
     int binaryHeap::getSize(){
         return this->size;
     }

@@ -14,7 +14,7 @@ class binaryHeap
 {
 private:
     Pair* heap;// pair: (item, priority)
-    int* elementIndices;// array: item -> index in heap
+    int* elementIndices;// array: item -> index in heap used in modifyPrio
     int size;
     int capacity;// Maximum capacity of the heap
     void upHeap(int idx);

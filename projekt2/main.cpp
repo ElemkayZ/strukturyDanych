@@ -22,7 +22,7 @@ int main() {
     double BHavgPeek = 0;
     double BHavgModify = 0;
     double BHavgSize = 0;
-    int dataBaseSize = 70000;//number of random elements added to DBs
+    int dataBaseSize = 30000;//number of random elements added to DBs
     std::cout << "data base size = " << dataBaseSize << std::endl;
 for (size_t i = 0; i < 10; i++)
 {
@@ -88,7 +88,6 @@ for (size_t i = 0; i < 10; i++)
         OAavgSize += d.count();
     }
         
-
 
 //BinaryHeap testing
     for (int i = 0; i < 20; i++)
@@ -172,22 +171,7 @@ for (size_t i = 0; i < 10; i++)
     BHavgSize /= 200;
     std::cout << "avgSize Time = " << BHavgSize << std::endl;
 
-    // while (!(orderedArray.getSize() == 0)) {
-    //     Pair element = orderedArray.extract();
-    //     std::cout << "Value: " << element.item << ", Priority: " << element.priority << std::endl;
-    // }
-
-
-    // printf("Dequeue:%d\n",pq2.extract()); // Output: 6
-
-    // pq.modifyPriority(1, 20);
-    // printf("Dequeue:%d\n",pq2.extract()); // Output: 1
 
     return 0;
 
 }
-
-//   while (!(pq.getSize() == 0)) {
-//         Pair element = pq.extract();
-//         std::cout << "Value: " << element.item << ", Priority: " << element.priority << std::endl;
-//     }
