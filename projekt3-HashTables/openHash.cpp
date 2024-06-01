@@ -45,7 +45,7 @@
     }
 
     void openHash::insert(Pair _data) {
-        if (count >= size * 0.6) { // Resize when load factor exceeds 0.7
+        if (count >= size * 0.7) { // Resize when load factor exceeds 0.7
             reSize();
         }
         int index = quadraticProbing(_data.key);
