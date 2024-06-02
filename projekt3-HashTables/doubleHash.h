@@ -6,7 +6,7 @@ class doubleHash
 {
 protected:
     int size,count;
-    Pair*table;
+    Pair* table;
     void reSize();
 public:
     doubleHash(int size);
@@ -18,6 +18,4 @@ public:
     int search(int key);
     void remove(int key);
     void display();
-
-    int quadraticProbing(int key);
 };
