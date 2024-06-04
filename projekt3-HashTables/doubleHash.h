@@ -1,21 +1,30 @@
-#include "Pair.h"
 #pragma once
+
 
 
 class doubleHash
 {
+    struct Node {
+    int key;
+    int value;
+    Node* next;
+
+    Node(int k, int v) : key(k), value(v), next(nullptr) {}
+};
 protected:
-    int size,count;
-    Pair* table;
-    void reSize();
+    int size,capacity;
+    int* tableLen;
+    Node**table;
+    void reHash();
+    int hashFunction1(int key);
+    int hashFunction2(int key);
 public:
     doubleHash(int size);
     ~doubleHash();
-    int hashFunction1(int key);
-    int hashFunction2(int key);
-    int doubleHashing(int key, int i);
-    void insert(Pair data);
-    int search(int key);
-    void remove(int key);
+    int doubleHashing(int key);
+    void insert(int key, int value);
+    void remove(int key);//
     void display();
+
+
 };

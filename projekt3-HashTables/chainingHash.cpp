@@ -1,37 +1,41 @@
 #include <iostream>
+#include <cstdlib>
 #include "chainingHash.h"
-//linked list Separate Chaining
-int chainingHash::hashFunction(int key) {
-    return key % size;
+
+//hashing function
+int chainingHash::hashFunction(int key){
+    return key % capacity;
 }
-void chainingHash::reSize() {
-    int oldSize = size;
-    size *= 2;
-    Node** newTable = new Node*[size];
-    for (int i = 0; i < size; ++i) {
-        newTable[i] = nullptr;
+//table size increase and rehashing
+void chainingHash::reHash() {
+    int oldcapacity = capacity;
+    Node** oldTable = table;
+    capacity *= 2;
+    table = new Node*[capacity];
+    for (int i = 0; i < capacity; ++i) {
+        table[i] = nullptr;
     }
-    for (int i = 0; i < oldSize; ++i) {
-        Node* entry = table[i];
+    for (int i = 0; i < oldcapacity; ++i) {
+        Node* entry = oldTable[i];
         while (entry != nullptr) {
-            Node* next = entry->next;
-            int index = hashFunction(entry->data->key);
-            entry->next = newTable[index];
-            newTable[index] = entry;
-            entry = next;
+            insert(entry->key, entry->value);
+            Node* prev = entry;
+            entry = entry->next;
+            delete prev;
         }
     }
-    delete[] table;
-    table = newTable;
+    delete[] oldTable;
 }
-chainingHash::chainingHash(int initialSize) : size(initialSize), count(0) {
-    table = new Node*[size];
-    for (int i = 0; i < size; ++i) {
+// construktor
+chainingHash::chainingHash(int _size) : capacity(_size), size(0) {
+    table = new Node*[capacity];
+    for (int i = 0; i < capacity; ++i) {
         table[i] = nullptr;
     }
 }
+// Deconstructor
 chainingHash::~chainingHash() {
-    for (int i = 0; i < size; ++i) {
+    for (int i = 0; i < capacity; ++i) {
         Node* entry = table[i];
         while (entry != nullptr) {
             Node* prev = entry;
@@ -41,59 +45,58 @@ chainingHash::~chainingHash() {
     }
     delete[] table;
 }
-void chainingHash::insert(Pair _data) {
-    if ((float)count / size > 0.7) {
-        reSize();
+//adding element to table
+void chainingHash::insert(int key, int value) {
+    if ((float)size / capacity > 0.7) {
+        reHash();
     }
-    int index = hashFunction(_data.key);
-    Node* newNode = new Node(&_data);
+    int index = hashFunction(key);
+    Node* newNode = new Node(key, value);
     if (table[index] == nullptr) {
         table[index] = newNode;
     } else {
         Node* entry = table[index];
-        while (entry->next != nullptr) {
+        Node* prev = nullptr;
+        while (entry != nullptr) {
+            if (entry->key == key) {
+                entry->value = value;
+                delete newNode;
+                return;
+            }
+            prev = entry;
             entry = entry->next;
         }
-        entry->next = newNode;
+        prev->next = newNode;
     }
-    count++;
+    ++size;
 }
-int chainingHash::search(int key) {
-    int index = hashFunction(key);
-    Node* entry = table[index];
-    while (entry != nullptr) {
-        if (entry->data->key == key) {
-            return entry->data->value;
-        }
-        entry = entry->next;
-    }
-    return -1;
-}
+//removing element from table
 void chainingHash::remove(int key) {
     int index = hashFunction(key);
     Node* entry = table[index];
     Node* prev = nullptr;
-    while (entry != nullptr && entry->data->key != key) {
+    while (entry != nullptr) {
+        if (entry->key == key) {
+            if (prev == nullptr) {
+                table[index] = entry->next;
+            } else {
+                prev->next = entry->next;
+            }
+            delete entry;
+            --size;
+            return;
+        }
         prev = entry;
         entry = entry->next;
     }
-    if (entry == nullptr) {
-        return;
-    }
-    if (prev == nullptr) {
-        table[index] = entry->next;
-    } else {
-        prev->next = entry->next;
-    }
-    delete entry;
-    count--;
 }
-void chainingHash::display() {
-    for (int i = 0; i < size; i++) {
-        std::cout << i;
+//display table
+void chainingHash::display(){
+    for (int i = 0; i < capacity; ++i) {
         Node* entry = table[i];
+        std::cout << "Index " << i << ": ";
         while (entry != nullptr) {
-            std::cout << " --> " << entry->data->key;
+            std::cout << "[" << entry->key << ": " << entry->value << "] ";
             entry = entry->next;
         }
         std::cout << std::endl;

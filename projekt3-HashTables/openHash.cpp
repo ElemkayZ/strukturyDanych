@@ -2,6 +2,7 @@
 #include "openHash.h"
 //Open Addressing with quadratic Probing
 
+//hashing function
     int openHash::hashFunction(int key) {
         return key % size;
     }
@@ -17,7 +18,7 @@
         }
         return (index + i) % size;
     }
-
+//table size increase and rehashing
     void openHash::reSize() {
         int oldSize = size;
         Pair* oldTable = table;
@@ -34,16 +35,16 @@
 
         delete[] oldTable;
     }
-
+//constructor
     openHash::openHash(int size) : size(size), count(0) {
         table = new Pair[size];
 
     }
-
+//deconstructor
     openHash::~openHash() {
         delete[] table;
     }
-
+//adding element to table
     void openHash::insert(Pair _data) {
         if (count >= size * 0.7) { // Resize when load factor exceeds 0.7
             reSize();
@@ -54,23 +55,7 @@
             count++;
         }
     }
-
-    int openHash::search(int key) {
-        int index = hashFunction(key);
-        int i = 0;
-        int j = i;
-        while (table[(index + i) % size].key != -1) {
-            if (table[(index + i) % size].key == key) {
-                return table[(index + i) % size].key;
-            }
-            j = i^2;
-            i++;
-
-
-        }
-        return -1;
-    }
-
+//removing element from table
     void openHash::remove(int key) {
         int index = hashFunction(key);
         int i = 0;
@@ -87,6 +72,7 @@
 
         }
     }
+//display table
     void openHash::display() {
         for (int i = 0; i < size; i++) {
             std::cout << i << " --> ";

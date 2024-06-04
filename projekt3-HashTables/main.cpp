@@ -8,8 +8,8 @@
 
 std::mt19937 rng(time(0));
 std::uniform_int_distribution<unsigned long> rNum(0,10000000);
-std::chrono::high_resolution_clock start,stop;
 std::chrono::duration <double, std::nano> d;
+std::chrono::high_resolution_clock start,stop;
 int main() {
     double oHashInsert = 0;
     double oHashRemove = 0;
@@ -32,8 +32,8 @@ for (size_t i = 0; i < 100; i++)
     
     for (int i = 0; i < dataBaseSize ; ++i) {
         oHash.insert(*new Pair(rNum(rng),rNum(rng)));
-        dHash.insert(*new Pair(rNum(rng),rNum(rng)));
-        chHash.insert(*new Pair(rNum(rng),rNum(rng)));
+        dHash.insert(rNum(rng),rNum(rng));
+        chHash.insert(rNum(rng),rNum(rng));
     }
     /////////////////////////////
     //openHash testing
@@ -67,7 +67,7 @@ for (size_t i = 0; i < 100; i++)
     for (int i = 0; i < 100; i++)
     {
         auto start = std::chrono::high_resolution_clock::now();
-        dHash.insert(*new Pair(rNum(rng),rNum(rng)));
+        dHash.insert(rNum(rng),rNum(rng));
         auto stop = std::chrono::high_resolution_clock::now();
         d = stop - start;
         dHashInsert += d.count();
@@ -92,7 +92,7 @@ for (size_t i = 0; i < 100; i++)
     for (int i = 0; i < 100; i++)
     {
         auto start = std::chrono::high_resolution_clock::now();
-        chHash.insert(*new Pair(rNum(rng),rNum(rng)));
+        chHash.insert(rNum(rng),rNum(rng));
         auto stop = std::chrono::high_resolution_clock::now();
         d = stop - start;
         chHashInsert += d.count();
