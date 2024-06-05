@@ -19,7 +19,7 @@ int main() {
 
     double chHashInsert = 0;
     double chHashRemove = 0;
-    int dataBaseSize = 1000000;//number of random elements added to DBs
+    int dataBaseSize = 1000;//number of random elements added to DBs
     std::cout << "data base size = " << dataBaseSize << std::endl;
     //////////////////////
     //data base generation

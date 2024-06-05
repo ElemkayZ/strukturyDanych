@@ -16,7 +16,7 @@
             i++;
             
         }
-        return (index + i) % size;
+        return (index + i);
     }
 //table size increase and rehashing
     void openHash::reSize() {
